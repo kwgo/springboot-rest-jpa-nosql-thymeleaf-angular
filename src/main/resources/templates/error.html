@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Error Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/bootstrap.css}" />
+</head>
+
+<body class="container">
+	<h1>Quiz error page</h1>
+	<table class="table jumbotron">
+		<tr>
+			<td>Date</td>
+			<td th:text="${exceptionInfo != null ? exceptionInfo.timestamp : timestamp}" />
+		</tr>
+		<tr>
+			<td>Path</td>
+			<td th:text="${exceptionInfo != null ? exceptionInfo.path : path}" />
+		</tr>
+		<tr>
+			<td>Error</td>
+			<td th:text="${exceptionInfo != null ? exceptionInfo.error : error}" />
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td th:text="${exceptionInfo != null ? exceptionInfo.status : status}" />
+		</tr>
+		<tr>
+			<td>Message</td>
+			<td th:text="${exceptionInfo != null ? exceptionInfo.message : message}" />
+		</tr>
+		<tr>
+			<td>Exception</td>
+			<td th:text="${exceptionInfo != null ? exceptionInfo.exception : exception}" />
+		</tr>
+		<tr>
+			<td>Trace</td>
+			<td><pre th:text="${exceptionInfo != null ? exceptionInfo.trace : trace}" /></td>
+		</tr>
+	</table>
+</body>
+</html>

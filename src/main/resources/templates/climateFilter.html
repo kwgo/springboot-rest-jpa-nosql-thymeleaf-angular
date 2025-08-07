@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="filterView" ng-show="filterView" ng-init="filterView=true">
+	<div class="title"><h2>Climate Summary</h2></div>
+	<div class="showing">
+	<div class="well">
+		<table width="100%">
+			<tr>
+				<td colspan="3"><p>Filter By Date Range</p></td>
+			</tr>
+			<tr>
+				<td>From</td>
+				<td>
+					<table>
+					<tr>
+					<td>
+					<select class="control" id="fromMonth" name="fromMonth" ng-model="fromMonth"
+						th:with="monthList = ${ {{'January','01'}, {'February','02'}, {'March','03'}, {'April','04'}, {'May','05'}, {'June','06'}, {'July','07'}, {'August','08'}, {'September','09'}, {'October','10'}, {'November','11'}, {'December','12'}} }">
+						<option></option>
+						<option th:each="month : ${monthList}" th:text="${month[0]}" th:value="${month[1]}" />
+					</select>
+					</td>
+					<td>
+					<select class="control" id="fromDay" name="fromDay" ng-model="fromDay"
+						th:with="dayList = ${ {'01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'} }">
+						<option></option>
+						<option th:each="day : ${dayList}" th:text="${day}" th:value="${day}" />
+					</select>
+					</td>
+					<td>
+					<select class="control" id="fromYear" name="fromYear" ng-model="fromYear"
+						th:with="yearList = ${ {'2015', '2016', '2017', '2018', '2019', '2020'} }">
+						<option></option>
+						<option th:each="year : ${yearList}" th:text="${year}" th:value="${year}" />
+					</select>
+					</td>
+					</tr>
+					</table>
+				</td>
+				<td style="width:60%" class="text-danger" >
+					<p class="inner" ng-show="errorFromDate || errors.errorFromDate">Please select a valid date</p>
+				</td>
+			</tr>
+			<tr>
+				<td>To</td>
+				<td>
+					<table>
+					<tr>
+					<td>
+					<select class="control" id="toMonth" name="toMonth" ng-model="toMonth"
+						th:with="monthList = ${ {{'January','01'}, {'February','02'}, {'March','03'}, {'April','04'}, {'May','05'}, {'June','06'}, {'July','07'}, {'August','08'}, {'September','09'}, {'October','10'}, {'November','11'}, {'December','12'}} }">
+						<option></option>
+						<option th:each="month : ${monthList}" th:text="${month[0]}" th:value="${month[1]}" />
+					</select>
+					</td>
+					<td>
+					<select class="control" id="toDay" name="toDay" ng-model="toDay"
+						th:with="dayList = ${ {'01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'} }">
+						<option></option>
+						<option th:each="day : ${dayList}" th:text="${day}" th:value="${day}" />
+					</select>
+					</td>
+					<td>
+					<select class="control" id="toYear" name="fromYear" ng-model="toYear"
+						th:with="yearList = ${ {'2015', '2016', '2017', '2018', '2019', '2020'} }">
+						<option></option>
+						<option th:each="year : ${yearList}" th:text="${year}" th:value="${year}" />
+					</select>
+					</td>
+					</tr>
+					</table>
+				</td>
+				<td style="width:60%" class="text-danger">
+					<p class="inner" ng-show="errorToDate || errors.errorToDate">Please select a valid date</p>
+					<p class="inner" ng-show="!errorToDate && errors.errorCompareDate">The To date should be later than the From date.</p>
+				</td>
+			</tr>
+		</table>
+	</div>	
+	<button type="button" class="btn" ng-click="goDateRange(0, pageSize)">Query</button>
+	<button type="button" class="btn" ng-click="goReset()">Reset</button>
+	</div>
+</div>
+</html>
+
+
+
+

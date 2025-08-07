@@ -1,0 +1,29 @@
+div.title {
+	width: 80%;
+	margin: 10px auto;
+}
+
+div.showing {
+	width: 80%;
+	margin: 10px auto;
+	border: 1px solid grey;
+	padding: 10px;
+}
+
+.header {
+	background-color: lightgray;
+}
+
+.control {
+	padding: 4px 4px;
+	margin: 6px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.inner {
+    display: table-cell;
+    vertical-align: middle;
+}

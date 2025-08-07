@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Climate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="#">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/bootstrap.css}" />
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/climate.css}" />
+<script type="text/javascript" th:src="@{/static/script/angular.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/script/climate.js}"></script>
+</head>
+<body class="container" ng-app="app" ng-controller="ctrl">
+	<div>
+		<div th:replace="climateFilter::filterView"></div>
+	</div>
+	<div>
+		<div th:replace="climateList::listView"></div>
+	</div>
+	<div>
+		<div th:replace="climateDetail::detailView"></div>
+	</div>
+</body>
+</html>

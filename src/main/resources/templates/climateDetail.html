@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="detailView" ng-show="detailView">
+	<div class="title"><h2>Climate Detail</h2></div>
+	<div class="showing">
+		<h2>{{climateDetail.stationName}}, {{climateDetail.province}}</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Station Name</td>
+					<td>{{climateDetail.stationName}}</td>
+				</tr>
+				<tr>
+					<td>Province</td>
+					<td>{{climateDetail.province}}</td>
+				</tr>
+				<tr>
+					<td>Date</td>
+					<td>{{climateDetail.date|date:"MM/dd/yyyy"}}</td>
+				</tr>
+				<tr>
+					<td>Mean Temp</td>
+					<td>{{climateDetail.meanTemp}}</td>
+				</tr>
+				<tr>
+					<td>Highest Monthly Max Temp</td>
+					<td>{{climateDetail.highestMonthlyMaxTemp}}</td>
+				</tr>
+				<tr>
+					<td>Lowest Monthly Min Temp</td>
+					<td>{{climateDetail.lowestMonthlyMinTemp}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="width:80%; margin: 6px auto; text-align: center;">
+		<button type="button" class="btn" ng-click="goBack()">Back</button>
+	</div>
+</div>
+</html>

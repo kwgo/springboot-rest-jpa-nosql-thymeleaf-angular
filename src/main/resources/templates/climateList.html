@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="listView" ng-show="listView">
+	<div class="showing">
+		<div>
+			Show
+			<select class="control" id="pageSize" name="pageSize" ng-model="pageSize" ng-click="goDateRange(0, pageSize)">
+				<option value="0">all</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+			rows
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr class="header">
+					<th class="col-12">Station Name</th>
+					<th class="text-center">Date</th>
+					<th class="text-right">Mean Temp</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="climate in climateList">
+					<td class="col-12">{{climate.stationName}}</td>
+					<td class="text-center">{{climate.date|date:"MM/dd/yyyy"}}</td>
+					<td class="text-right" ng-click="getDetail(climate.stationName)">
+						{{climate.meanTemp != null ? climate.meanTemp : 'N/A'}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:replace="climateNavigation::navigationView"></div>
+	</div>
+</div>
+</html>

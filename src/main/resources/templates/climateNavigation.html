@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div  class="modal-footer no-margin-top" th:fragment="navigationView" ng-show="pageSize>0 && navigator.numberOfElements>0">
+	<table width="100%" class="pull-right no-margin">
+	<tr>
+	<td class="text-left">
+		Showing
+		{{navigator.pageable.pageNumber * pageSize + 1}} - {{navigator.pageable.pageNumber * pageSize + navigator.numberOfElements}}
+		of
+		{{navigator.totalElements}}
+	</td>
+	<td>
+		<ul class="pagination">
+		<li>
+			<a ng-click="goDateRange(0, pageSize)">Start</a>
+		</li>
+		<li ng-show="floor(navigator.pageable.pageNumber/5)>0">
+			<a ng-click="goDateRange(navigator.pageable.pageNumber-1, pageSize)">Prev</a>
+		</li>
+		<li ng-repeat="pageIndex in [].constructor(5) track by $index">
+			<a ng-click="goDateRange($index+floor(navigator.pageable.pageNumber/5)*5, pageSize)"
+				ng-show="$index+floor(navigator.pageable.pageNumber/5)*5<navigator.totalPages"
+				style="{{$index==navigator.pageable.pageNumber%5?'background:#6faed9':''}}">
+				{{$index+1+(floor(navigator.pageable.pageNumber/5)*5)}}
+			</a>
+		</li>
+		<li ng-show="floor(navigator.pageable.pageNumber/5)*5+5<navigator.totalPages">
+			<a ng-click="goDateRange(navigator.pageable.pageNumber+1, pageSize)">Next</a>
+		</li>
+		<li>
+			<a ng-click="goDateRange(navigator.totalPages - 1, pageSize)">End</a>
+		</li>
+	</ul>
+	</td>
+	</tr>
+	</table>
+</div>
+</html>

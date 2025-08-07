@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+	<Properties>
+		<Property name="displayName">quiz</Property>
+		<Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L -%m%n</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+		</Console>
+		<File name="error" fileName="${displayName}_error.log"
+			append="false">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+		</File>
+		<RollingFile name="rollingFile"
+			fileName="${displayName}.log"
+			filePattern="${displayName}_%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="20 MB" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.springframework" level="WARN" />
+		<Logger name="org.hibernate" level="info" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="com.zaxxer" level="info" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="org.thymeleaf" level="info" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+
+		<Root level="DEBUG">
+			<AppenderRef ref="console"></AppenderRef>
+			<AppenderRef ref="error"></AppenderRef>
+			<AppenderRef ref="rollingFile"></AppenderRef>
+		</Root>
+	</Loggers>
+</configuration>
